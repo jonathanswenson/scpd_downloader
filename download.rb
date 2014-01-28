@@ -6,7 +6,6 @@ require 'rotp'
 require 'watir'
 require 'watir-webdriver'
 require 'io/console'
-require 'headless'
 require 'yaml'
 
 BASE_URL = "https://mvideox.stanford.edu/Graduate"
