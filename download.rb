@@ -89,9 +89,6 @@ end
 def main
   @args = parse_args
 
-  headless = Headless.new
-  headless.start
-
   browser = Watir::Browser.new #:chrome
   browser.driver.manage.timeouts.implicit_wait=5
 
@@ -99,7 +96,6 @@ def main
 
   lecture_urls = find_lecture_urls(browser)
   browser.close
-  headless.destroy
 
   download(lecture_urls)
 end
