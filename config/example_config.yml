@@ -1,0 +1,26 @@
+# username - this is your SUNetID (the prefix to your email _____@stanford.edu)
+username: sunetID
+# password - your SUNetID password (used to log into all stanford pages.)
+password: password
+# access_code is the two factor auth secret that is entered into the Google Authenticator
+# (or other similar app) that generates 2 factor auth codes.
+# Setting up a new authentication device (via https://accounts.stanford.edu/)
+# by specifying this value, this script shouldn't need to ask you for your codes.
+
+#access_code: 26digitcode
+
+# the first time you access an scpd video from a certain class it will require you to agree to the
+# Stanford terms and conditions for watching/downloading the films. By specifying always_agree: true
+# you will automatically agree to these conditions. This tool is not to be used to violate these tools.
+# by using this tool you already must agree to these terms, however setting this value will automatically
+# agree for you.
+
+#always_agree: true
+
+# quality
+# speficy either 720 or 540 to specify what quality videos are downloaded.
+# for videos lasting ~1:15 a 540p video corresponds to around a 300MB file while 720
+# produces a 1.2GB file for each video downloaded.
+quality: 540
+
+driver: chrome
