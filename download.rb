@@ -149,7 +149,7 @@ def find_lecture_urls(browser)
     quit(browser, "The course '#{@args[:course]}' could not be found.")
   end
 
-  quit(browser, "You do not have access to this class") if brower.html =~ /access is restricted to enrolled students/
+  quit(browser, "You do not have access to this class") if browser.html =~ /access is restricted to enrolled students/
 
   # check the User Agreement
   check_agreement(browser)
