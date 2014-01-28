@@ -92,7 +92,7 @@ def main
   headless = Headless.new
   headless.start
 
-  browser = Watir::Browser.new :chrome
+  browser = Watir::Browser.new #:chrome
   browser.driver.manage.timeouts.implicit_wait=5
 
   auth(browser)
@@ -192,7 +192,7 @@ end
 # authenticates the WATIR web browser with username/password and two factor auth code.
 def auth(browser)
   # load settings
-  @settings = YAML.load_file("config/config.yml")
+  @settings =  File.exists?("config/config.yml") ? YAML.load_file("config/config.yml") : {}
   browser.goto BASE_URL
 
   browser.text_field(:name => 'username').set get_user

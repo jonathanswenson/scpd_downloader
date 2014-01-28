@@ -1,7 +1,9 @@
 # username - this is your SUNetID (the prefix to your email _____@stanford.edu)
 username: sunetID
+
 # password - your SUNetID password (used to log into all stanford pages.)
 password: password
+
 # access_code is the two factor auth secret that is entered into the Google Authenticator
 # (or other similar app) that generates 2 factor auth codes.
 # Setting up a new authentication device (via https://accounts.stanford.edu/)
@@ -18,9 +20,8 @@ password: password
 #always_agree: true
 
 # quality
-# speficy either 720 or 540 to specify what quality videos are downloaded.
+# specify either 720 or 540 to specify what quality videos are downloaded.
 # for videos lasting ~1:15 a 540p video corresponds to around a 300MB file while 720
 # produces a 1.2GB file for each video downloaded.
 quality: 540
 
-driver: chrome
