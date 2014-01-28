@@ -207,7 +207,7 @@ def auth(browser)
   quit(browser, "Username or password incorrect") if browser.html =~ /I use this machine regularly/
 
   if browser.html =~ /Send SMS/
-    browser.button(:text => /Send SMS/).click
+    browser.button(:name => "send").click
   end
 
   browser.text_field(:id => "otp").set get_2f_code
