@@ -148,6 +148,9 @@ def find_lecture_urls(browser)
     puts e
     quit(browser, "The course '#{@args[:course]}' could not be found.")
   end
+
+  quit(browser, "You do not have access to this class") if brower.html =~ /access is restricted to enrolled students/
+
   # check the User Agreement
   check_agreement(browser)
 
@@ -199,8 +202,13 @@ def auth(browser)
   browser.text_field(:name => "password").set get_pw
   browser.button(:name => 'Submit').click
 
+
   #this is rude crude and unattractive, but I'm lazy.
   quit(browser, "Username or password incorrect") if browser.html =~ /I use this machine regularly/
+
+  if browser.html =~ /Send SMS/
+    browser.button(:text => /Send SMS/).click
+  end
 
   browser.text_field(:id => "otp").set get_2f_code
   browser.button(:name => 'send').click
