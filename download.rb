@@ -230,6 +230,19 @@ def auth_downloader(page, agent)
   return page, agent
 end
 
+# download_video?
+# checks to see if the video class number is within the specified range or equal to
+# the specified video num.
+def download_video?(vid_id)
+  start = @args[:start_lec_num].to_i
+  nd = @args[:end_lec_num]
+  if start
+    return vid_id >= start.to_i && vid_id <= nd.to_i if nd
+    return vid_id == start.to_i
+  end
+  return true
+end
+
 def download(lectures)
   agent = Mechanize.new
   agent.pluggable_parser.default = Mechanize::Download
@@ -239,15 +252,10 @@ def download(lectures)
 
   count = 0
   lectures.each do |id, types|
-    # puts @args[:start_lec_num] && @args[:end_lec_num] && id >= @args[:start_lec_num].to_i && id <= @args[:end_lec_num].to_i
-    # puts @args[:start_lec_num] && @args[:end_lec_num] == nil && id == @args[:start_lec_num].to_i
-    if (@args[:start_lec_num] && @args[:end_lec_num] && id >= @args[:start_lec_num].to_i && id <= @args[:end_lec_num].to_i) ||
-       (@args[:start_lec_num] && @args[:end_lec_num] == nil && id == @args[:start_lec_num].to_i) ||
-       (@args[:start_lec_num] == nil && @args[:end_lec_num] == nil)
-       quality = 0
-       quality = 1 if @settings["quality"] == 720
-       file_name = types[quality].split('/')[-1]
-       if !File.exist?(file_name)
+    if download_video?(id)
+      quality = (@settings["quality"] == 720) ? 1 : 0
+      file_name = types[quality].split('/')[-1]
+      if !File.exist?(file_name)
         puts "downloading lecture - #{id}:  #{file_name}"
         agent.get(types[0]).save(file_name)
         count += 1
