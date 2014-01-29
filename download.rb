@@ -239,8 +239,11 @@ def download(lectures)
 
   count = 0
   lectures.each do |id, types|
+    # puts @args[:start_lec_num] && @args[:end_lec_num] && id >= @args[:start_lec_num].to_i && id <= @args[:end_lec_num].to_i
+    # puts @args[:start_lec_num] && @args[:end_lec_num] == nil && id == @args[:start_lec_num].to_i
     if (@args[:start_lec_num] && @args[:end_lec_num] && id >= @args[:start_lec_num].to_i && id <= @args[:end_lec_num].to_i) ||
-       (@args[:start_lec_num] && @args[:end_lec_num] == nil && id == @args[:start_lec_num].to_i)
+       (@args[:start_lec_num] && @args[:end_lec_num] == nil && id == @args[:start_lec_num].to_i) ||
+       (@args[:start_lec_num] == nil && @args[:end_lec_num] == nil)
        quality = 0
        quality = 1 if @settings["quality"] == 720
        file_name = types[quality].split('/')[-1]
