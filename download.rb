@@ -234,7 +234,7 @@ end
 # checks to see if the video class number is within the specified range or equal to
 # the specified video num.
 def download_video?(vid_id)
-  start = @args[:start_lec_num].to_i
+  start = @args[:start_lec_num]
   nd = @args[:end_lec_num]
   if start
     return vid_id >= start.to_i && vid_id <= nd.to_i if nd
