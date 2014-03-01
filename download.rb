@@ -190,7 +190,8 @@ end
 # authenticates the WATIR web browser with username/password and two factor auth code.
 def auth(browser)
   # load settings
-  @settings =  File.exists?("config/config.yml") ? YAML.load_file("config/config.yml") : {}
+  settings_file_path = File.join(File.dirname(__FILE__),"config","config.yml")
+  @settings =  File.exists?(settings_file_path) ? YAML.load_file(settings_file_path) : {}
   browser.goto BASE_URL
 
   browser.text_field(:name => 'username').set get_user
