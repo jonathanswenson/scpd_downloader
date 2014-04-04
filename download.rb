@@ -150,6 +150,7 @@ def find_lecture_urls(browser)
   check_agreement(browser)
 
   browser.link(:href => "#course-sessions").click
+  browser.link(:href => "#course-sessions").click if browser.html =~ /Show All/
   sleep(2)
   btns = browser.links(:class => "btn", :text => /watch/i)
   num_lectures = btns.length
