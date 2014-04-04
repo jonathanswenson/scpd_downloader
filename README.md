@@ -14,9 +14,13 @@ Previously Stanford limited the speed of the downloads to around 80kbps, now it 
 - Ruby >= 1.9.3
 - Bundler gem (`gem install bundler`)
 
-# Required gems
+# Installation
 
-Run bundle install in order to install the following gems.
+In order to install the following gems run:
+```shell
+ bundle install
+```
+
 - JSON gem (`gem install json`)
 - [Mechanize gem](http://mechanize.rubyforge.org/) (`gem install mechanize`)
 - ROTP gem(`gem install rotp`)
