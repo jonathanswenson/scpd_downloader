@@ -252,10 +252,11 @@ def download(lectures)
   auth_downloader(page, agent)
 
   count = 0
+
   lectures.each do |id, types|
     if download_video?(id)
       quality = (@settings["quality"] == 720) ? 1 : 0
-      file_name = types[quality].split('/')[-1]
+      file_name = "#{id}-#{types[quality].split('/')[-1]}"
       if !File.exist?(file_name)
         puts "downloading lecture - #{id}:  #{file_name}"
         agent.get(types[0]).save(file_name)
