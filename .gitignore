@@ -1,2 +1,3 @@
 config/config.yml
 *.mp4
+Gemfile.lock
